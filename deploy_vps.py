@@ -9,6 +9,10 @@
 """
 import paramiko
 import time
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 HOST = "85.198.87.228"
 USER = "root"
