@@ -37,7 +37,7 @@ export default function NewsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/posts.json")
+    fetch("/api/posts")
       .then((r) => r.json())
       .then((data) => {
         setPosts(data.posts || []);
@@ -76,6 +76,7 @@ export default function NewsSection() {
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {categories.map((cat) => (
             <button
+              type="button"
               key={cat}
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
