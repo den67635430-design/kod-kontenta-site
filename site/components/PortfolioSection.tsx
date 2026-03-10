@@ -41,7 +41,7 @@ const PROJECTS = [
 export default function PortfolioSection() {
   return (
     <section className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

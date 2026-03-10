@@ -50,7 +50,7 @@ const CONTACTS = [
 export default function ContactSection() {
   return (
     <section className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
