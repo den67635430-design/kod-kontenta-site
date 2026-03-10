@@ -129,42 +129,45 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex justify-end items-center relative"
+            className="flex justify-end items-start relative pt-8"
           >
             <div className="absolute inset-0 pointer-events-none"
-              style={{ background: "radial-gradient(circle at 65% 50%, rgba(124,58,237,0.22) 0%, transparent 60%)" }} />
+              style={{ background: "radial-gradient(circle at 65% 30%, rgba(124,58,237,0.18) 0%, transparent 55%)" }} />
 
-            <div className="relative float-animation">
-              <video ref={videoRef} src="/mascot/lati.mp4" autoPlay loop muted playsInline
-                className="w-[460px] h-[460px] xl:w-[560px] xl:h-[560px] object-contain relative z-10"
-                style={{ filter: "drop-shadow(0 0 80px rgba(124,58,237,0.55))" }} />
-
+            <div className="relative float-animation flex flex-col items-center">
+              {/* Пузырь приветствия */}
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
-                className="absolute top-8 -left-4 z-20 rounded-2xl rounded-tl-sm px-5 py-4"
+                className="mb-3 rounded-2xl rounded-br-sm px-4 py-3 self-start ml-2 z-20"
                 style={{
                   background: "linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)",
                   border: "2px solid rgba(255,255,255,0.35)",
-                  boxShadow: "0 16px 48px rgba(124,58,237,0.75), 0 0 0 1px rgba(255,255,255,0.12)",
-                  minWidth: "230px",
+                  boxShadow: "0 12px 40px rgba(124,58,237,0.65), 0 0 0 1px rgba(255,255,255,0.12)",
+                  minWidth: "200px",
                 }}
               >
-                <p className="text-lg font-bold text-white">Привет! 👋</p>
-                <p className="text-sm font-medium text-white mt-1 leading-relaxed" style={{ opacity: 0.9 }}>
+                <p className="text-base font-bold text-white">Привет! 👋</p>
+                <p className="text-xs font-medium text-white mt-0.5 leading-relaxed" style={{ opacity: 0.9 }}>
                   Я ЛАТИ — помогу автоматизировать<br/>ваш бизнес с помощью AI!
                 </p>
               </motion.div>
 
+              {/* ЛАТИ — уменьшен вдвое */}
+              <video ref={videoRef} src="/mascot/lati.mp4" autoPlay loop muted playsInline
+                className="w-[230px] h-[230px] xl:w-[280px] xl:h-[280px] object-contain relative z-10"
+                style={{ filter: "drop-shadow(0 0 50px rgba(124,58,237,0.6))" }} />
+
+              {/* Онлайн бейдж под ЛАТИ */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.7 }}
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-6 py-2.5 rounded-full flex items-center gap-2 whitespace-nowrap"
+                className="mt-3 px-5 py-2 rounded-full flex items-center gap-2 whitespace-nowrap z-20"
                 style={{ background: "rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.2)", backdropFilter: "blur(16px)" }}
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-sm font-semibold text-white">Онлайн · готов к работе</span>
               </motion.div>
             </div>
