@@ -52,8 +52,8 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
             </span>
           </button>
 
-          {/* Десктоп навигация — растянута на всю ширину */}
-          <div className="hidden md:flex items-center justify-between flex-1 px-4">
+          {/* Десктоп навигация — компактно по центру */}
+          <div className="hidden md:flex items-center justify-center flex-1 gap-3">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
