@@ -58,7 +58,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         initial={{ opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-        className="absolute right-4 xl:right-6 top-16 flex flex-col items-center z-20 float-animation"
+        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center z-20 float-animation"
         style={{ width: "190px" }}
       >
         {/* Видео ЛАТИ */}
