@@ -84,17 +84,31 @@ export default function Home() {
         </div>
       </main>
 
-      {/* SEO-текст — виден поисковикам, скрыт визуально */}
-      <div aria-hidden="true" style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
-        <h2>ИИ агенты и AI ассистенты для автоматизации бизнеса</h2>
-        <p>Создаём ИИ агентов, нейросотрудников и AI ассистентов для автоматизации бизнеса. AI продавцы, виртуальные сотрудники, нейро ассистенты работают 24/7. Автоматизация продаж, поддержки клиентов и бизнес-процессов с помощью искусственного интеллекта.</p>
-        <h3>AI профессии — нейросотрудники на любую должность</h3>
-        <p>AI продавец и нейро продавец для автоматизации продаж. AI бухгалтер и нейро бухгалтер для ведения финансов. AI HR менеджер и AI рекрутер для подбора персонала. AI парсер и нейро парсер для сбора данных. AI маркетолог, AI SMM менеджер, AI копирайтер для продвижения. AI менеджер по логистике и нейро логист для доставки. AI юрист и AI консультант для правовых вопросов. AI аналитик данных и AI бизнес-аналитик для анализа. AI репетитор и AI преподаватель для обучения. AI оператор поддержки и AI колл-центр для обслуживания клиентов.</p>
-        <h3>AI агенты для бизнеса — аналоги ChatGPT, Claude, Gemini</h3>
-        <p>Разрабатываем умных AI агентов и ИИ ассистентов на базе ChatGPT, Claude AI, Gemini, DeepSeek, Grok. Чат-боты для Telegram и WhatsApp. Нейросотрудники и виртуальные продавцы под ключ. Автоматизация на Make.com, n8n, Zapier, CrewAI, AutoGen.</p>
-        <h3>Автоматизация бизнеса с помощью нейросетей</h3>
-        <p>Автоматизация продаж, лидогенерации, бухгалтерии, HR и обработки заявок. AI продавцы и нейро ассистенты для интернет-магазинов, агентств и сервисов. Разработка на Next.js, React Native, Python. Интеграция с CRM, Bitrix24, amoCRM.</p>
-      </div>
+      {/* SEO-секция — видимый текст с ключевыми словами */}
+      <section className="py-16 border-t border-white/5">
+        <div className="container-wide">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div>
+              <h3 className="text-lg font-semibold gradient-text mb-3">AI-агенты и нейросотрудники</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Создаём ИИ-агентов и нейросотрудников для автоматизации бизнеса. AI-продавец, AI-бухгалтер, AI-менеджер, AI-парсер, AI-HR — нейросотрудник на любую должность работает 24/7.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold gradient-text mb-3">Автоматизация бизнес-процессов</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Автоматизируем продажи, поддержку, аналитику и документооборот. Интеграция с CRM, Bitrix24, amoCRM. Работаем на базе ChatGPT, Claude AI, Gemini, DeepSeek.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold gradient-text mb-3">Чат-боты для Telegram и WhatsApp</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Умные чат-боты для продаж, техподдержки и лидогенерации. AI-боты заменяют менеджеров и обрабатывают заявки автоматически. Готовый бот за 3–7 дней.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer с мини-ЛАТИ */}
       <footer className="border-t border-white/5 py-12">

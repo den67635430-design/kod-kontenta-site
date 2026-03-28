@@ -141,6 +141,66 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kodkontenta.ru/#organization",
+      "name": "Код контента",
+      "url": "https://kodkontenta.ru",
+      "description": "Разработка AI-агентов, нейросотрудников, чат-ботов и автоматизация бизнеса с помощью искусственного интеллекта",
+      "founder": { "@type": "Person", "name": "Денис", "sameAs": "https://t.me/denis_kodkontenta" },
+      "sameAs": ["https://t.me/kontentcod", "https://t.me/denis_kodkontenta"],
+      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://t.me/denis_kodkontenta" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kodkontenta.ru/#website",
+      "url": "https://kodkontenta.ru",
+      "name": "Код контента",
+      "publisher": { "@id": "https://kodkontenta.ru/#organization" },
+    },
+    {
+      "@type": "ItemList",
+      "name": "AI-услуги для бизнеса",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "AI-агенты и нейросотрудники", "url": "https://kodkontenta.ru/services" },
+        { "@type": "ListItem", "position": 2, "name": "Telegram-боты и чат-боты", "url": "https://kodkontenta.ru/services" },
+        { "@type": "ListItem", "position": 3, "name": "Автоматизация бизнеса", "url": "https://kodkontenta.ru/services" },
+        { "@type": "ListItem", "position": 4, "name": "Сайты и лендинги", "url": "https://kodkontenta.ru/services" },
+        { "@type": "ListItem", "position": 5, "name": "Мобильные приложения", "url": "https://kodkontenta.ru/services" },
+        { "@type": "ListItem", "position": 6, "name": "VPS и инфраструктура", "url": "https://kodkontenta.ru/services" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое AI-агент для бизнеса?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AI-агент — это нейросотрудник на основе искусственного интеллекта, который выполняет задачи 24/7: отвечает клиентам, обрабатывает заявки, ведёт продажи. Работает как AI-продавец, AI-поддержка или AI-менеджер." }
+        },
+        {
+          "@type": "Question",
+          "name": "Как заказать чат-бот для Telegram?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Напишите нам в Telegram @denis_kodkontenta. Создаём ботов для продаж, поддержки, автопостинга, CRM-интеграций. Готовый бот за 3-7 дней." }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько стоит создать AI-агента?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Стоимость зависит от задач. Простой чат-бот — от 15 000 руб. Полноценный нейросотрудник с интеграциями — от 50 000 руб. Напишите для расчёта." }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем отличается нейросотрудник от обычного бота?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Нейросотрудник работает на базе GPT-4 или Claude AI, понимает контекст и ведёт живой диалог. Обычный бот отвечает только на заготовленные фразы. Нейросотрудник — это AI-продавец, AI-бухгалтер, AI-консультант в одном." }
+        },
+      ]
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -148,6 +208,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         <CodeRain />
         {children}
