@@ -13,9 +13,9 @@ const CONTACTS = [
     value: "@denis_kodkontenta",
     href: "https://t.me/denis_kodkontenta",
     desc: "Пишите по любым вопросам — отвечу быстро",
-    color: "from-blue-600/20 to-blue-800/20",
-    border: "hover:border-blue-500/40",
-    iconColor: "text-blue-400",
+    color: "from-yellow-900/25 to-stone-900/25",
+    border: "hover:border-yellow-700/40",
+    iconColor: "text-yellow-500",
   },
   {
     icon: (
@@ -27,9 +27,9 @@ const CONTACTS = [
     value: "@kontentcod",
     href: "https://t.me/kontentcod",
     desc: "AI-новости, кейсы и советы каждый день",
-    color: "from-purple-600/20 to-purple-800/20",
-    border: "hover:border-purple-500/40",
-    iconColor: "text-purple-400",
+    color: "from-stone-900/25 to-yellow-900/25",
+    border: "hover:border-stone-500/40",
+    iconColor: "text-yellow-400",
   },
   {
     icon: (
@@ -41,15 +41,15 @@ const CONTACTS = [
     value: "kodkontenta.ru",
     href: "https://kodkontenta.ru",
     desc: "Вы уже здесь 😊",
-    color: "from-cyan-600/20 to-cyan-800/20",
-    border: "hover:border-cyan-500/40",
-    iconColor: "text-cyan-400",
+    color: "from-yellow-900/20 to-stone-900/25",
+    border: "hover:border-yellow-800/40",
+    iconColor: "text-yellow-300",
   },
 ];
 
 export default function ContactSection() {
   return (
-    <section className="py-24 relative">
+    <section className="py-32 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -57,16 +57,15 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="badge mx-auto mb-4">Контакты</div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Давайте <span className="gradient-text">поговорим</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Есть идея для проекта? Нужна автоматизация? Просто напишите — разберёмся вместе
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-32">
           {CONTACTS.map((contact, i) => (
             <motion.a
               key={contact.label}
@@ -103,11 +102,11 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="relative rounded-3xl overflow-hidden p-12 text-center"
-          style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(37,99,235,0.2))", border: "1px solid rgba(124,58,237,0.2)" }}
+          style={{ background: "linear-gradient(135deg, rgba(154,122,46,0.15), rgba(201,168,76,0.10))", border: "1px solid rgba(201,168,76,0.15)" }}
         >
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-20 blob-animation"
-              style={{ background: "radial-gradient(circle, #7c3aed, transparent 70%)" }} />
+              style={{ background: "radial-gradient(circle, #C9A84C, transparent 70%)" }} />
           </div>
           <div className="relative z-10">
             <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">

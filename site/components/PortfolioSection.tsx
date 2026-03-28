@@ -4,43 +4,46 @@ import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
+    title: "Мой Логист",
+    desc: "Android-приложение для водителей-дальнобойщиков: AI-оптимизация маршрутов, антирадар (80 000+ камер), личный кабинет, подписка. Работает без интернета на кэше.",
+    tags: ["React Native", "Expo", "FastAPI", "SQLite", "ЮКасса"],
+    status: "Android",
+    statusColor: "text-green-400 bg-green-400/10",
+    gradient: "from-orange-900/40 to-yellow-900/40",
+    border: "border-orange-500/20",
+    icon: "🚛",
+    link: "https://kodkontenta.ru/apk/moy-logist.apk",
+    isDownload: true,
+  },
+  {
     title: "Fabrika — AI App Factory",
     desc: "Платформа для автоматического создания приложений под ключ с помощью AI. Клиент описывает задачу — система генерирует готовый продукт.",
     tags: ["Next.js", "TypeScript", "Claude AI", "SQLite", "Telegram"],
     status: "Работает",
     statusColor: "text-green-400 bg-green-400/10",
-    gradient: "from-purple-900/40 to-blue-900/40",
-    border: "border-purple-500/20",
+    gradient: "from-yellow-900/40 to-stone-900/40",
+    border: "border-yellow-700/20",
     icon: "🏭",
     link: "https://fabrika-app-factory-production.up.railway.app",
+    isDownload: false,
   },
   {
     title: "Репетитор под рукой",
-    desc: "AI-приложение для персонализированного обучения. Адаптируется под уровень ученика и создаёт индивидуальные задания.",
-    tags: ["React Native", "AI", "Education"],
-    status: "В разработке",
-    statusColor: "text-amber-400 bg-amber-400/10",
+    desc: "AI-репетитор для дошкольников и школьников. Помогает с домашними заданиями, подготовкой к ОГЭ/ЕГЭ, учит читать и писать. Адаптируется под уровень ученика.",
+    tags: ["React", "TypeScript", "Supabase", "AI"],
+    status: "Работает",
+    statusColor: "text-green-400 bg-green-400/10",
     gradient: "from-blue-900/40 to-cyan-900/40",
-    border: "border-blue-500/20",
+    border: "border-stone-600/20",
     icon: "📚",
-    link: null,
-  },
-  {
-    title: "Kod VPN",
-    desc: "Надёжный VPN-сервис на собственной инфраструктуре. Быстрый, без логов, с простым подключением для команд и бизнеса.",
-    tags: ["WireGuard", "Linux", "Node.js"],
-    status: "Скоро",
-    statusColor: "text-slate-400 bg-slate-400/10",
-    gradient: "from-cyan-900/40 to-green-900/40",
-    border: "border-cyan-500/20",
-    icon: "🔐",
-    link: null,
+    link: "http://repetitor.kodkontenta.ru",
+    isDownload: false,
   },
 ];
 
 export default function PortfolioSection() {
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -48,11 +51,11 @@ export default function PortfolioSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="badge mx-auto mb-4">Портфолио</div>
+          
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Мои <span className="gradient-text">продукты</span>
+            Наши <span className="gradient-text">продукты</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Собственные AI-продукты, которые уже работают и помогают людям
           </p>
         </motion.div>
@@ -95,12 +98,24 @@ export default function PortfolioSection() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  download={project.isDownload ? "moy-logist.apk" : undefined}
                   className="btn-primary text-sm py-2 justify-center mt-2"
                 >
-                  Открыть проект
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  {project.isDownload ? (
+                    <>
+                      Скачать APK
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Открыть проект
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </>
+                  )}
                 </a>
               )}
             </motion.div>

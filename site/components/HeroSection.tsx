@@ -20,13 +20,13 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
     let timeout: ReturnType<typeof setTimeout>;
     if (typing) {
       if (displayed.length < word.length) {
-        timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 80);
+        timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 130);
       } else {
-        timeout = setTimeout(() => setTyping(false), 1800);
+        timeout = setTimeout(() => setTyping(false), 4000);
       }
     } else {
       if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
+        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 70);
       } else {
         setWordIndex((i) => (i + 1) % WORDS.length);
         setTyping(true);
@@ -42,10 +42,10 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-[10%] w-[600px] h-[600px] opacity-20 blob-animation"
-          style={{ background: "radial-gradient(circle, #7c3aed, transparent 70%)" }} />
-        <div className="absolute bottom-1/4 right-[15%] w-[400px] h-[400px] opacity-15 blob-animation"
-          style={{ background: "radial-gradient(circle, #2563eb, transparent 70%)", animationDelay: "4s" }} />
+        <div className="absolute top-1/4 left-[10%] w-[600px] h-[600px] opacity-15 blob-animation"
+          style={{ background: "radial-gradient(circle, #C9A84C, transparent 70%)" }} />
+        <div className="absolute bottom-1/4 right-[15%] w-[400px] h-[400px] opacity-10 blob-animation"
+          style={{ background: "radial-gradient(circle, #9A7A2E, transparent 70%)", animationDelay: "4s" }} />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
@@ -53,124 +53,119 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           }} />
       </div>
 
-      <div className="container-wide relative z-10 pt-28 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-0 items-center" style={{ minHeight: "80vh" }}>
-
-          <div className="flex flex-col justify-center lg:pr-16">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="badge mb-8 self-start">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              AI-разработка для бизнеса
-            </motion.div>
-
-            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="text-6xl xl:text-7xl font-bold mb-8" style={{ lineHeight: 1.05 }}>
-              <span className="text-white">Создаём </span>
-              <span className="gradient-text">{displayed}<span className="animate-pulse">|</span></span>
-              <br /><span className="text-white">для вашего бизнеса</span>
-            </motion.h1>
-
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-              className="text-xl text-slate-400 leading-relaxed mb-10 max-w-xl">
-              Telegram-боты, нейросотрудники, сайты и приложения под ключ.
-              Автоматизирую бизнес с помощью AI — быстро и без лишних затрат.
-            </motion.p>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
-              className="flex flex-wrap gap-4 mb-10">
-              <button onClick={() => onNavigate("contact")} className="btn-primary text-base px-8 py-4">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                Обсудить проект
-              </button>
-              <button onClick={() => onNavigate("portfolio")} className="btn-ghost text-base px-8 py-4">
-                Смотреть работы
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-3 mb-12">
-              <a href="https://t.me/kontentcod" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm text-slate-300 hover:text-white transition-all">
-                <svg className="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>
-                </svg>
-                Канал @kontentcod
-              </a>
-              <a href="https://t.me/denis_kodkontenta" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm text-slate-300 hover:text-white transition-all">
-                <svg className="w-4 h-4 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>
-                </svg>
-                Написать лично
-              </a>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
-              className="flex gap-12">
-              {[
-                { value: "20+", label: "проектов" },
-                { value: "3", label: "AI-продукта" },
-                { value: "24/7", label: "поддержка" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-3xl font-bold gradient-text">{s.value}</div>
-                  <div className="text-sm text-slate-500 mt-1">{s.label}</div>
-                </div>
-              ))}
-            </motion.div>
+      {/* ЛАТИ — правый угол, компактный блок */}
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        className="absolute right-4 xl:right-6 top-16 flex flex-col items-center z-20 float-animation"
+        style={{ width: "190px" }}
+      >
+        {/* Видео ЛАТИ */}
+        <video
+          ref={videoRef}
+          src="/mascot/lati.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))" }}
+        />
+        {/* Надпись под ЛАТИ, ровно шириной 190px */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
+          style={{
+            width: "190px",
+            background: "linear-gradient(135deg, #9A7A2E 0%, #C9A84C 100%)",
+            border: "2px solid rgba(255,255,255,0.20)",
+            boxShadow: "0 8px 30px rgba(201,168,76,0.35)",
+            borderRadius: "16px",
+            marginTop: "8px",
+            padding: "10px 14px",
+            textAlign: "center",
+          }}
+        >
+          <p className="text-sm font-bold text-white">Привет! 👋</p>
+          <p className="text-xs font-medium text-white mt-1 leading-snug" style={{ opacity: 0.9 }}>
+            Я ЛАТИ — помогу автоматизировать ваш бизнес с помощью AI!
+          </p>
+          <div className="flex items-center justify-center gap-1.5 mt-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>Онлайн · готов к работе</span>
           </div>
+        </motion.div>
+      </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex justify-end items-start relative pt-8"
-          >
-            <div className="absolute inset-0 pointer-events-none"
-              style={{ background: "radial-gradient(circle at 65% 30%, rgba(124,58,237,0.18) 0%, transparent 55%)" }} />
+      <div className="container-wide relative z-10 pt-28 pb-16 w-full">
+        <div className="max-w-2xl flex flex-col justify-center" style={{ minHeight: "80vh" }}>
 
-            <div className="relative float-animation flex flex-col items-center">
-              {/* Пузырь приветствия */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
-                className="mb-3 rounded-2xl rounded-br-sm px-4 py-3 self-start ml-2 z-20"
-                style={{
-                  background: "linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)",
-                  border: "2px solid rgba(255,255,255,0.35)",
-                  boxShadow: "0 12px 40px rgba(124,58,237,0.65), 0 0 0 1px rgba(255,255,255,0.12)",
-                  minWidth: "200px",
-                }}
-              >
-                <p className="text-base font-bold text-white">Привет! 👋</p>
-                <p className="text-xs font-medium text-white mt-0.5 leading-relaxed" style={{ opacity: 0.9 }}>
-                  Я ЛАТИ — помогу автоматизировать<br/>ваш бизнес с помощью AI!
-                </p>
-              </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="badge mb-8 self-start">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            AI-разработка для бизнеса
+          </motion.div>
 
-              {/* ЛАТИ — уменьшен вдвое */}
-              <video ref={videoRef} src="/mascot/lati.mp4" autoPlay loop muted playsInline
-                className="w-[230px] h-[230px] xl:w-[280px] xl:h-[280px] object-contain relative z-10"
-                style={{ filter: "drop-shadow(0 0 50px rgba(124,58,237,0.6))" }} />
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+            className="text-6xl xl:text-7xl font-bold mb-8" style={{ lineHeight: 1.05 }}>
+            <span className="text-white">Создаём </span>
+            <span className="gradient-text">{displayed}<span className="animate-pulse">|</span></span>
+            <br /><span className="text-white">для вашего бизнеса</span>
+          </motion.h1>
 
-              {/* Онлайн бейдж под ЛАТИ */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.7 }}
-                className="mt-3 px-5 py-2 rounded-full flex items-center gap-2 whitespace-nowrap z-20"
-                style={{ background: "rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.2)", backdropFilter: "blur(16px)" }}
-              >
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-sm font-semibold text-white">Онлайн · готов к работе</span>
-              </motion.div>
-            </div>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
+            className="text-xl text-slate-400 leading-relaxed mb-10 max-w-xl">
+            Telegram-боты, нейросотрудники, сайты и приложения под ключ.
+            Автоматизируем бизнес с помощью AI — быстро и без лишних затрат.
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
+            className="flex flex-wrap gap-4 mb-10">
+            <button onClick={() => onNavigate("contact")} className="btn-primary text-base px-8 py-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Обсудить проект
+            </button>
+            <button onClick={() => onNavigate("portfolio")} className="btn-ghost text-base px-8 py-4">
+              Смотреть работы
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
+            className="flex flex-wrap gap-3 mb-12">
+            <a href="https://t.me/kontentcod" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm text-slate-300 hover:text-white transition-all">
+              <svg className="w-4 h-4 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>
+              </svg>
+              Канал @kontentcod
+            </a>
+            <a href="https://t.me/denis_kodkontenta" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm text-slate-300 hover:text-white transition-all">
+              <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>
+              </svg>
+              Написать лично
+            </a>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
+            className="flex gap-12">
+            {[
+              { value: "20+", label: "проектов" },
+              { value: "3", label: "AI-продукта" },
+              { value: "24/7", label: "поддержка" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-3xl font-bold gradient-text">{s.value}</div>
+                <div className="text-sm text-slate-500 mt-1">{s.label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
 

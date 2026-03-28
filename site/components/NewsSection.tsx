@@ -23,12 +23,12 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  portfolio: "text-purple-400 bg-purple-400/10",
-  news: "text-blue-400 bg-blue-400/10",
-  speaking: "text-amber-400 bg-amber-400/10",
-  reviews: "text-green-400 bg-green-400/10",
-  tips: "text-cyan-400 bg-cyan-400/10",
-  other: "text-slate-400 bg-slate-400/10",
+  portfolio: "text-yellow-400 bg-yellow-400/10",
+  news: "text-yellow-300 bg-yellow-300/10",
+  speaking: "text-stone-300 bg-stone-300/10",
+  reviews: "text-yellow-200 bg-yellow-200/10",
+  tips: "text-stone-400 bg-stone-400/10",
+  other: "text-stone-500 bg-stone-500/10",
 };
 
 export default function NewsSection() {
@@ -51,7 +51,7 @@ export default function NewsSection() {
   const visible = filtered.slice(0, 9);
 
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,11 +59,11 @@ export default function NewsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="badge mx-auto mb-4">Новости</div>
+          
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Из <span className="gradient-text">Telegram-канала</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Актуальные посты из канала{" "}
             <a href="https://t.me/kontentcod" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
               @kontentcod
@@ -81,7 +81,7 @@ export default function NewsSection() {
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 filter === cat
-                  ? "bg-purple-600 text-white"
+                  ? "bg-yellow-700 text-white"
                   : "glass text-slate-400 hover:text-white"
               }`}
             >
@@ -108,7 +108,7 @@ export default function NewsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="card group cursor-pointer hover:border-purple-500/30"
+                className="card group cursor-pointer hover:border-yellow-700/30"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${CATEGORY_COLORS[post.category] || CATEGORY_COLORS.other}`}>

@@ -6,56 +6,56 @@ const SERVICES = [
   {
     icon: "🤖",
     title: "AI-агенты и нейросотрудники",
-    desc: "Создаю умных агентов, которые выполняют задачи 24/7 — отвечают клиентам, создают контент, обрабатывают заявки.",
+    desc: "Создаём умных агентов, которые выполняют задачи 24/7 — отвечают клиентам, создают контент, обрабатывают заявки.",
     tags: ["Claude AI", "GPT-4", "Telegram", "WhatsApp"],
-    color: "from-purple-600/20 to-blue-600/20",
-    border: "hover:border-purple-500/40",
+    color: "from-yellow-900/30 to-stone-900/30",
+    border: "hover:border-yellow-700/40",
   },
   {
     icon: "💬",
     title: "Telegram-боты и чат-боты",
     desc: "Боты под любую задачу: продажи, поддержка, автопостинг, опросы, квизы, интеграции с CRM и платёжками.",
     tags: ["Telegram Bot API", "Node.js", "Python"],
-    color: "from-blue-600/20 to-cyan-600/20",
-    border: "hover:border-blue-500/40",
+    color: "from-stone-800/30 to-yellow-900/30",
+    border: "hover:border-stone-500/40",
   },
   {
     icon: "🌐",
     title: "Сайты и лендинги",
     desc: "Современные сайты под ключ: лендинги, корпоративные сайты, интернет-магазины. Быстро, красиво, SEO.",
     tags: ["Next.js", "React", "Tailwind"],
-    color: "from-cyan-600/20 to-green-600/20",
-    border: "hover:border-cyan-500/40",
+    color: "from-yellow-900/30 to-stone-800/30",
+    border: "hover:border-yellow-800/40",
   },
   {
     icon: "📱",
     title: "Мобильные приложения",
     desc: "Кроссплатформенные приложения для iOS и Android. От MVP до полноценного продукта.",
     tags: ["React Native", "Expo", "TypeScript"],
-    color: "from-green-600/20 to-amber-600/20",
-    border: "hover:border-green-500/40",
+    color: "from-stone-900/30 to-yellow-900/20",
+    border: "hover:border-stone-600/40",
   },
   {
     icon: "⚡",
     title: "Автоматизация бизнеса",
-    desc: "Автоматизирую рутинные процессы: рассылки, парсинг, обработка данных, интеграции между сервисами.",
+    desc: "Автоматизируем рутинные процессы: рассылки, парсинг, обработка данных, интеграции между сервисами.",
     tags: ["Make.com", "Python", "API"],
-    color: "from-amber-600/20 to-red-600/20",
-    border: "hover:border-amber-500/40",
+    color: "from-yellow-900/20 to-stone-900/30",
+    border: "hover:border-yellow-700/40",
   },
   {
     icon: "🔐",
     title: "VPN и безопасность",
     desc: "Настройка VPN-серверов, защищённых каналов связи и инфраструктуры для команд и бизнеса.",
     tags: ["WireGuard", "OpenVPN", "Linux"],
-    color: "from-red-600/20 to-purple-600/20",
-    border: "hover:border-red-500/40",
+    color: "from-stone-800/30 to-yellow-900/30",
+    border: "hover:border-stone-500/40",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,11 +63,11 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="badge mx-auto mb-4">Услуги</div>
+          
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Что я <span className="gradient-text">создаю</span>
+            Что мы <span className="gradient-text">создаём</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Весь спектр AI-разработки: от простых ботов до сложных интеллектуальных систем
           </p>
         </motion.div>

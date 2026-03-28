@@ -1,16 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #07070f;
-  --bg-secondary: #0d0d1a;
-  --accent-purple: #7c3aed;
-  --accent-blue: #2563eb;
-  --accent-cyan: #06b6d4;
-  --accent-amber: #f59e0b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Основные фоны — тёплый антрацит как обшивка салона */
+  --bg-primary: #0C0A07;
+  --bg-secondary: #141108;
+  --bg-card: #1A1610;
+
+  /* Золото — как хром и декоративные вставки */
+  --accent-gold: #C9A84C;
+  --accent-gold-light: #E2C47A;
+  --accent-gold-dark: #9A7A2E;
+
+  /* Платина — как полированный металл */
+  --accent-platinum: #A8A8A8;
+  --accent-platinum-light: #D4D4D4;
+
+  /* Бордо — глубокий как кожа */
+  --accent-burgundy: #6B1F2E;
+
+  /* Текст */
+  --text-primary: #F5F0E8;
+  --text-secondary: #A89880;
+  --text-muted: #6B5E4E;
+
+  /* Стекло — тёплый тон */
+  --glass-bg: rgba(201, 168, 76, 0.04);
+  --glass-border: rgba(201, 168, 76, 0.12);
+  --glass-border-hover: rgba(201, 168, 76, 0.30);
 }
 
 * {
@@ -34,7 +50,7 @@ body {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--accent-purple); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--accent-gold-dark); border-radius: 2px; }
 
 .glass {
   background: var(--glass-bg);
@@ -43,27 +59,31 @@ body {
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* Золотой градиентный текст */
 .gradient-text {
-  background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
+  background: linear-gradient(135deg, #E2C47A, #C9A84C, #A8A8A8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Тёплый акцентный градиент */
 .gradient-text-warm {
-  background: linear-gradient(135deg, #f59e0b, #ef4444, #a78bfa);
+  background: linear-gradient(135deg, #C9A84C, #E2C47A, #D4D4D4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Основная кнопка — золото */
 .btn-primary {
-  background: linear-gradient(135deg, #7c3aed, #2563eb);
-  color: white;
+  background: linear-gradient(135deg, #9A7A2E, #C9A84C, #E2C47A);
+  color: #0C0A07;
   padding: 12px 28px;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
+  letter-spacing: 0.03em;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
@@ -75,9 +95,11 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
+  background: linear-gradient(135deg, #C9A84C, #E2C47A, #F0D898);
 }
 
+/* Призрачная кнопка — платина */
 .btn-ghost {
   background: var(--glass-bg);
   color: var(--text-primary);
@@ -95,7 +117,8 @@ body {
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(201, 168, 76, 0.06);
+  border-color: var(--glass-border-hover);
   transform: translateY(-2px);
 }
 
@@ -119,9 +142,16 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Золотое мерцание */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 .float-animation { animation: float 4s ease-in-out infinite; }
 .blob-animation { animation: blob 8s ease-in-out infinite; }
 
+/* Значок/бейдж — золотой */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -130,11 +160,13 @@ body {
   border-radius: 100px;
   font-size: 13px;
   font-weight: 500;
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  color: #a78bfa;
+  background: rgba(201, 168, 76, 0.10);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--accent-gold-light);
+  letter-spacing: 0.02em;
 }
 
+/* Карточка */
 .card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -144,9 +176,9 @@ body {
 }
 
 .card:hover {
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: var(--glass-border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 168, 76, 0.06);
 }
 
 .divider {
@@ -154,7 +186,13 @@ body {
   background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
 }
 
-/* Широкий контейнер */
+/* Золотая горизонтальная линия-акцент */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  opacity: 0.4;
+}
+
 .container-wide {
   width: 100%;
   max-width: 1400px;

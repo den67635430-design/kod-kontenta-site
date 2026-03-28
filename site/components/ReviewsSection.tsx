@@ -50,7 +50,7 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section className="py-24 relative">
+    <section className="py-32 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -58,12 +58,12 @@ export default function ReviewsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="badge mx-auto mb-4">Отзывы</div>
+          
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Говорят <span className="gradient-text">клиенты</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Реальные отзывы от людей, с которыми работал
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+            Реальные отзывы от людей, с которыми работали
           </p>
         </motion.div>
 
@@ -106,11 +106,11 @@ export default function ReviewsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: reviews.length * 0.1 }}
-            className="card border-dashed border-white/10 flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-purple-500/40 min-h-48"
+            className="card border-dashed border-white/10 flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-yellow-700/40 min-h-48"
             onClick={() => setShowForm(true)}
           >
-            <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center">
-              <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-full bg-yellow-700/20 flex items-center justify-center">
+              <svg className="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
             </div>
@@ -155,13 +155,13 @@ export default function ReviewsSection() {
                         placeholder="Ваше имя *"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-purple-500/50"
+                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-yellow-700/50"
                       />
                       <input
                         placeholder="Должность / ниша"
                         value={form.role}
                         onChange={(e) => setForm({ ...form, role: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-purple-500/50"
+                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-yellow-700/50"
                       />
                       <textarea
                         required
@@ -169,7 +169,7 @@ export default function ReviewsSection() {
                         placeholder="Ваш отзыв *"
                         value={form.text}
                         onChange={(e) => setForm({ ...form, text: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-purple-500/50 resize-none"
+                        className="w-full px-4 py-3 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-yellow-700/50 resize-none"
                       />
                       <div className="flex items-center gap-2">
                         <span className="text-sm text-slate-400">Оценка:</span>

@@ -108,7 +108,7 @@ export default function LatiChat() {
                   <div
                     className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                       msg.role === "user"
-                        ? "bg-purple-600 text-white rounded-br-sm"
+                        ? "bg-yellow-700 text-white rounded-br-sm"
                         : "glass text-slate-200 rounded-bl-sm"
                     }`}
                   >
@@ -142,7 +142,7 @@ export default function LatiChat() {
                   <button
                     key={q}
                     onClick={() => send(q)}
-                    className="text-xs px-3 py-1.5 rounded-xl glass text-slate-300 hover:text-white hover:border-purple-500/40 transition-all"
+                    className="text-xs px-3 py-1.5 rounded-xl glass text-slate-300 hover:text-white hover:border-yellow-700/40 transition-all"
                   >
                     {q}
                   </button>
@@ -158,12 +158,12 @@ export default function LatiChat() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && send(input)}
                 placeholder="Написать сообщение..."
-                className="flex-1 px-4 py-2.5 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-purple-500/40 border border-transparent"
+                className="flex-1 px-4 py-2.5 rounded-xl glass text-white text-sm placeholder-slate-500 outline-none focus:border-yellow-700/40 border border-transparent"
               />
               <button
                 onClick={() => send(input)}
                 disabled={!input.trim() || loading}
-                className="w-10 h-10 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-40 flex items-center justify-center transition-colors"
+                className="w-10 h-10 rounded-xl bg-yellow-700 hover:bg-yellow-600 disabled:opacity-40 flex items-center justify-center transition-colors"
               >
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
