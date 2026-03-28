@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -14,8 +14,6 @@ const SECTIONS = ["hero", "services", "portfolio", "news", "reviews", "contact"]
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-
   // Следим за активной секцией при скролле
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,25 +56,25 @@ export default function Home() {
         <div className="divider mx-6 lg:mx-24" />
 
         <div id="services">
-          <ServicesSection />
+          <ServicesSection preview />
         </div>
 
         <div className="divider mx-6 lg:mx-24" />
 
         <div id="portfolio">
-          <PortfolioSection />
+          <PortfolioSection preview />
         </div>
 
         <div className="divider mx-6 lg:mx-24" />
 
         <div id="news">
-          <NewsSection />
+          <NewsSection preview />
         </div>
 
         <div className="divider mx-6 lg:mx-24" />
 
         <div id="reviews">
-          <ReviewsSection />
+          <ReviewsSection preview />
         </div>
 
         <div className="divider mx-6 lg:mx-24" />

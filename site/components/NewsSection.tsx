@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface Post {
   id: number;
@@ -13,7 +14,7 @@ interface Post {
   url: string;
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
+export const CATEGORY_LABELS: Record<string, string> = {
   portfolio: "Работа",
   news: "Новости AI",
   speaking: "Выступление",
@@ -22,7 +23,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   other: "Пост",
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
+export const CATEGORY_COLORS: Record<string, string> = {
   portfolio: "text-yellow-400 bg-yellow-400/10",
   news: "text-yellow-300 bg-yellow-300/10",
   speaking: "text-stone-300 bg-stone-300/10",
@@ -31,7 +32,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   other: "text-stone-500 bg-stone-500/10",
 };
 
-export default function NewsSection() {
+export default function NewsSection({ preview = false }: { preview?: boolean }) {
   const [posts, setPosts] = useState<Post[]>([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
@@ -48,7 +49,7 @@ export default function NewsSection() {
 
   const categories = ["all", "news", "portfolio", "tips", "speaking", "reviews"];
   const filtered = filter === "all" ? posts : posts.filter((p) => p.category === filter);
-  const visible = filtered.slice(0, 9);
+  const visible = preview ? filtered.slice(0, 3) : filtered.slice(0, 30);
 
   return (
     <section className="py-24 relative min-h-screen flex flex-col justify-center">
@@ -59,10 +60,20 @@ export default function NewsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Из <span className="gradient-text">Telegram-канала</span>
-          </h2>
+          {preview ? (
+            <Link href="/news" className="group inline-block">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 group-hover:opacity-80 transition-opacity">
+                Из <span className="gradient-text">Telegram-канала</span>
+                <svg className="inline-block ml-3 w-8 h-8 text-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </h2>
+            </Link>
+          ) : (
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              Из <span className="gradient-text">Telegram-канала</span>
+            </h2>
+          )}
           <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Актуальные посты из канала{" "}
             <a href="https://t.me/kontentcod" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
@@ -72,27 +83,29 @@ export default function NewsSection() {
           </p>
         </motion.div>
 
-        {/* Фильтры */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {categories.map((cat) => (
-            <button
-              type="button"
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                filter === cat
-                  ? "bg-yellow-700 text-white"
-                  : "glass text-slate-400 hover:text-white"
-              }`}
-            >
-              {cat === "all" ? "Все" : CATEGORY_LABELS[cat]}
-            </button>
-          ))}
-        </div>
+        {/* Фильтры — только на полной странице */}
+        {!preview && (
+          <div className="flex flex-wrap gap-2 justify-center mb-10">
+            {categories.map((cat) => (
+              <button
+                type="button"
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                  filter === cat
+                    ? "bg-yellow-700 text-white"
+                    : "glass text-slate-400 hover:text-white"
+                }`}
+              >
+                {cat === "all" ? "Все" : CATEGORY_LABELS[cat]}
+              </button>
+            ))}
+          </div>
+        )}
 
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(preview ? 3 : 6)].map((_, i) => (
               <div key={i} className="card animate-pulse h-48" />
             ))}
           </div>

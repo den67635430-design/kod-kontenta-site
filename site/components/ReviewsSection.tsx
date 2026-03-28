@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface Review {
   name: string;
@@ -11,7 +12,7 @@ interface Review {
   date: string;
 }
 
-const INITIAL_REVIEWS: Review[] = [
+export const ALL_REVIEWS: Review[] = [
   {
     name: "Алексей М.",
     role: "Владелец интернет-магазина",
@@ -28,13 +29,15 @@ const INITIAL_REVIEWS: Review[] = [
   },
 ];
 
-export default function ReviewsSection() {
-  const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
+export default function ReviewsSection({ preview = false }: { preview?: boolean }) {
+  const [reviews, setReviews] = useState<Review[]>(ALL_REVIEWS);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ name: "", role: "", text: "", rating: 5 });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const displayed = preview ? reviews.slice(0, 3) : reviews;
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!form.name || !form.text) return;
     setReviews((prev) => [
@@ -58,17 +61,27 @@ export default function ReviewsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Говорят <span className="gradient-text">клиенты</span>
-          </h2>
+          {preview ? (
+            <Link href="/reviews" className="group inline-block">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 group-hover:opacity-80 transition-opacity">
+                Говорят <span className="gradient-text">клиенты</span>
+                <svg className="inline-block ml-3 w-8 h-8 text-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </h2>
+            </Link>
+          ) : (
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              Говорят <span className="gradient-text">клиенты</span>
+            </h2>
+          )}
           <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Реальные отзывы от людей, с которыми работали
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          {reviews.map((review, i) => (
+          {displayed.map((review, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -105,7 +118,7 @@ export default function ReviewsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: reviews.length * 0.1 }}
+            transition={{ delay: displayed.length * 0.1 }}
             className="card border-dashed border-white/10 flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-yellow-700/40 min-h-48"
             onClick={() => setShowForm(true)}
           >

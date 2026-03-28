@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const PROJECTS = [
+export const PROJECTS = [
   {
     title: "Мой Логист",
     desc: "Android-приложение для водителей-дальнобойщиков: AI-оптимизация маршрутов, антирадар (80 000+ камер), личный кабинет, подписка. Работает без интернета на кэше.",
@@ -41,7 +42,9 @@ const PROJECTS = [
   },
 ];
 
-export default function PortfolioSection() {
+export default function PortfolioSection({ preview = false }: { preview?: boolean }) {
+  const displayed = preview ? PROJECTS.slice(0, 3) : PROJECTS;
+
   return (
     <section className="py-24 relative min-h-screen flex flex-col justify-center">
       <div className="container-wide">
@@ -51,17 +54,27 @@ export default function PortfolioSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Наши <span className="gradient-text">продукты</span>
-          </h2>
+          {preview ? (
+            <Link href="/portfolio" className="group inline-block">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 group-hover:opacity-80 transition-opacity">
+                Наши <span className="gradient-text">продукты</span>
+                <svg className="inline-block ml-3 w-8 h-8 text-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </h2>
+            </Link>
+          ) : (
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              Наши <span className="gradient-text">продукты</span>
+            </h2>
+          )}
           <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
             Собственные AI-продукты, которые уже работают и помогают людям
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
-          {PROJECTS.map((project, i) => (
+          {displayed.map((project, i) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
@@ -121,6 +134,7 @@ export default function PortfolioSection() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
