@@ -9,6 +9,8 @@ import NewsSection from "@/components/NewsSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import ContactSection from "@/components/ContactSection";
 import LatiChat from "@/components/LatiChat";
+import CookieBanner from "@/components/CookieBanner";
+import Link from "next/link";
 
 const SECTIONS = ["hero", "services", "portfolio", "news", "reviews", "contact"];
 
@@ -138,6 +140,11 @@ export default function Home() {
                 <span className="text-white font-bold">Код контента</span>
               </div>
               <p className="text-slate-600 text-sm">© 2026 · AI-разработка для бизнеса</p>
+              <div className="flex gap-3 mt-2 text-xs">
+                <Link href="/privacy" className="text-slate-600 hover:text-slate-400 transition-colors">Конфиденциальность</Link>
+                <Link href="/terms" className="text-slate-600 hover:text-slate-400 transition-colors">Соглашение</Link>
+                <Link href="/offer" className="text-slate-600 hover:text-slate-400 transition-colors">Оферта</Link>
+              </div>
             </div>
 
             {/* Контакты */}
@@ -166,6 +173,7 @@ export default function Home() {
 
       {/* AI-ассистент ЛАТИ */}
       <LatiChat />
+      <CookieBanner />
     </div>
   );
 }
