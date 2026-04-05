@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const WORDS = ["сайты", "чат-боты", "AI-агентов", "приложения", "автоматизацию"];
+const WORDS = ["AI-агентов", "чат-ботов", "нейросотрудников", "автоматизации", "приложений"];
 
 interface HeroSectionProps {
   onNavigate: (id: string) => void;
@@ -108,16 +108,20 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-6xl xl:text-7xl font-bold mb-8" style={{ lineHeight: 1.05 }}>
-            <span className="text-white">Создаём </span>
-            <span className="gradient-text">{displayed}<span className="animate-pulse">|</span></span>
-            <br /><span className="text-white">для вашего бизнеса</span>
+            className="text-6xl xl:text-7xl font-bold mb-4" style={{ lineHeight: 1.05 }}>
+            <span className="gradient-text">Автоматизация бизнеса</span>
+            <br /><span className="text-white">под ваши задачи</span>
           </motion.h1>
+
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+            className="text-2xl font-semibold text-white mb-6">
+            Ваш бизнес работает 24/7. Даже когда вы спите.
+          </motion.p>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
             className="text-xl text-slate-400 leading-relaxed mb-10 max-w-xl">
             Telegram-боты, нейросотрудники, сайты и приложения под ключ.
-            Автоматизируем бизнес с помощью AI — быстро и без лишних затрат.
+            Меньше рутины. Больше прибыли. Свободное время — ваше.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
@@ -145,7 +149,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               </svg>
               Канал @kontentcod
             </a>
-            <a href="https://t.me/denis_kodkontenta" target="_blank" rel="noopener noreferrer"
+            <a href="https://t.me/Dikiy4747" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm text-slate-300 hover:text-white transition-all">
               <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>

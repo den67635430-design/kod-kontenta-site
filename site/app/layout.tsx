@@ -150,9 +150,9 @@ const jsonLd = {
       "name": "Код контента",
       "url": "https://kodkontenta.ru",
       "description": "Разработка AI-агентов, нейросотрудников, чат-ботов и автоматизация бизнеса с помощью искусственного интеллекта",
-      "founder": { "@type": "Person", "name": "Денис", "sameAs": "https://t.me/denis_kodkontenta" },
-      "sameAs": ["https://t.me/kontentcod", "https://t.me/denis_kodkontenta"],
-      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://t.me/denis_kodkontenta" },
+      "founder": { "@type": "Person", "name": "Денис", "sameAs": "https://t.me/Dikiy4747" },
+      "sameAs": ["https://t.me/kontentcod", "https://t.me/Dikiy4747"],
+      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://t.me/Dikiy4747" },
     },
     {
       "@type": "WebSite",
@@ -184,7 +184,7 @@ const jsonLd = {
         {
           "@type": "Question",
           "name": "Как заказать чат-бот для Telegram?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Напишите нам в Telegram @denis_kodkontenta. Создаём ботов для продаж, поддержки, автопостинга, CRM-интеграций. Готовый бот за 3-7 дней." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Напишите нам в Telegram @Dikiy4747. Создаём ботов для продаж, поддержки, автопостинга, CRM-интеграций. Готовый бот за 3-7 дней." }
         },
         {
           "@type": "Question",

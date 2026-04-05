@@ -86,8 +86,6 @@ const AGENTS = [
   },
 ];
 
-const OPENROUTER_KEY = "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";
-const MODEL = "google/gemma-3-27b-it:free";
 const ADMIN_CODE = "Admin9791";
 const DEMO_MINUTES = 30;
 
@@ -133,23 +131,18 @@ export default function DemoSection() {
     setLoading(true);
     setMessages([]);
     try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const res = await fetch("/api/demo-chat", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENROUTER_KEY}`,
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: MODEL,
           messages: [
             { role: "system", content: ag.prompt },
             { role: "user", content: "Привет" },
           ],
-          max_tokens: 300,
         }),
       });
       const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || "Привет! Чем могу помочь?";
+      const reply = data.reply || "Привет! Чем могу помочь?";
       setMessages([{ role: "assistant", content: reply }]);
       setInitialized((prev) => ({ ...prev, [id]: true }));
     } catch {
@@ -166,23 +159,18 @@ export default function DemoSection() {
     setMessages(newMessages);
     setLoading(true);
     try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const res = await fetch("/api/demo-chat", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENROUTER_KEY}`,
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: MODEL,
           messages: [
             { role: "system", content: agent.prompt },
             ...newMessages.slice(-10),
           ],
-          max_tokens: 500,
         }),
       });
       const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || "Не удалось получить ответ";
+      const reply = data.reply || "Не удалось получить ответ";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [...prev, { role: "assistant", content: "Ошибка соединения" }]);

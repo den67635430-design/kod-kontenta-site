@@ -10,8 +10,8 @@ const CONTACTS = [
       </svg>
     ),
     label: "Личка Telegram",
-    value: "@denis_kodkontenta",
-    href: "https://t.me/denis_kodkontenta",
+    value: "@Dikiy4747",
+    href: "https://t.me/Dikiy4747",
     desc: "Пишите по любым вопросам — отвечу быстро",
     color: "from-yellow-900/25 to-stone-900/25",
     border: "hover:border-yellow-700/40",
@@ -45,6 +45,20 @@ const CONTACTS = [
     border: "hover:border-yellow-800/40",
     iconColor: "text-yellow-300",
   },
+  {
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.585-1.496c.596-.19 1.365 1.26 2.178 1.817.615.422 1.083.33 1.083.33l2.178-.03s1.139-.071.599-1.069c-.044-.081-.314-.661-1.617-1.868-1.363-1.26-1.181-1.057.462-3.238.999-1.329 1.398-2.142 1.272-2.49-.12-.332-.854-.244-.854-.244l-2.451.015s-.182-.025-.317.056c-.132.079-.217.262-.217.262s-.387 1.028-.903 1.903c-1.088 1.848-1.523 1.946-1.701 1.832-.413-.267-.31-1.075-.31-1.649 0-1.793.272-2.54-.528-2.733-.265-.064-.46-.106-1.137-.113-.869-.009-1.603.003-2.019.206-.277.135-.491.437-.361.454.161.022.526.099.72.363.25.341.241 1.107.241 1.107s.144 2.11-.335 2.372c-.328.179-.778-.186-1.744-1.857-.496-.858-.871-1.805-.871-1.805s-.072-.177-.202-.272c-.157-.115-.376-.151-.376-.151l-2.328.015s-.35.01-.478.162c-.113.136-.009.417-.009.417s1.822 4.261 3.881 6.409c1.89 1.974 4.037 1.844 4.037 1.844h.972z"/>
+      </svg>
+    ),
+    label: "ВКонтакте",
+    value: "Код контента",
+    href: "https://vk.com/club237342216",
+    desc: "Публикации, кейсы и новости",
+    color: "from-blue-900/20 to-stone-900/25",
+    border: "hover:border-blue-700/40",
+    iconColor: "text-blue-400",
+  },
 ];
 
 export default function ContactSection() {
@@ -65,7 +79,7 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-32">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
           {CONTACTS.map((contact, i) => (
             <motion.a
               key={contact.label}
@@ -117,7 +131,7 @@ export default function ContactSection() {
               Напишите в Telegram — обсудим задачу и найдём лучшее решение
             </p>
             <a
-              href="https://t.me/denis_kodkontenta"
+              href="https://t.me/Dikiy4747"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-4"

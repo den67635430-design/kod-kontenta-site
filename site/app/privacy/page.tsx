@@ -20,7 +20,7 @@ export default function PrivacyPage() {
 
             <Section title="1. Общие положения">
               <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта <strong>kodkontenta.ru</strong> (далее — «Сайт»).</p>
-              <p>Оператор персональных данных: Денис Алексеевич (далее — «Оператор»), контакт: <a href="https://t.me/denis_kodkontenta" className="text-yellow-500 hover:text-yellow-400">@denis_kodkontenta</a>, email: den67635430@gmail.com</p>
+              <p>Оператор персональных данных: Соловьёв Денис Владимирович (далее — «Оператор»), Telegram: <a href="https://t.me/Dikiy4747" className="text-yellow-500 hover:text-yellow-400">@Dikiy4747</a>, email: den67635430@gmail.com</p>
               <p>Использование Сайта означает безоговорочное согласие с настоящей Политикой. Если вы не согласны — покиньте Сайт.</p>
             </Section>
 
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
             <Section title="10. Контакты">
               <p>По вопросам обработки персональных данных:</p>
               <ul>
-                <li>Telegram: <a href="https://t.me/denis_kodkontenta" className="text-yellow-500 hover:text-yellow-400">@denis_kodkontenta</a></li>
+                <li>Telegram: <a href="https://t.me/Dikiy4747" className="text-yellow-500 hover:text-yellow-400">@Dikiy4747</a></li>
                 <li>Email: <a href="mailto:den67635430@gmail.com" className="text-yellow-500 hover:text-yellow-400">den67635430@gmail.com</a></li>
               </ul>
             </Section>

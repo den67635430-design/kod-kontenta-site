@@ -70,7 +70,7 @@ export default function TermsPage() {
 
             <Section title="10. Контакты">
               <ul>
-                <li>Telegram: <a href="https://t.me/denis_kodkontenta" className="text-yellow-500 hover:text-yellow-400">@denis_kodkontenta</a></li>
+                <li>Telegram: <a href="https://t.me/Dikiy4747" className="text-yellow-500 hover:text-yellow-400">@Dikiy4747</a></li>
                 <li>Email: <a href="mailto:den67635430@gmail.com" className="text-yellow-500 hover:text-yellow-400">den67635430@gmail.com</a></li>
               </ul>
             </Section>

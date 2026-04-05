@@ -21,7 +21,7 @@ export default function OfferPage() {
 
             <Section title="1. Общие положения">
               <p>Настоящий документ является публичной офертой (далее — «Оферта») в соответствии со ст. 437 Гражданского кодекса РФ.</p>
-              <p><strong>Исполнитель:</strong> Денис Алексеевич, контакт: <a href="https://t.me/denis_kodkontenta" className="text-yellow-500 hover:text-yellow-400">@denis_kodkontenta</a></p>
+              <p><strong>Исполнитель:</strong> Соловьёв Денис Владимирович, email: den67635430@gmail.com, Telegram: <a href="https://t.me/Dikiy4747" className="text-yellow-500 hover:text-yellow-400">@Dikiy4747</a></p>
               <p><strong>Заказчик</strong> — любое физическое или юридическое лицо, принявшее условия настоящей Оферты.</p>
               <p>Акцептом Оферты является оплата услуг или письменное (в мессенджере/email) подтверждение заказа.</p>
             </Section>
@@ -107,7 +107,7 @@ export default function OfferPage() {
 
             <Section title="11. Контакты">
               <ul>
-                <li>Telegram: <a href="https://t.me/denis_kodkontenta" className="text-yellow-500 hover:text-yellow-400">@denis_kodkontenta</a></li>
+                <li>Telegram: <a href="https://t.me/Dikiy4747" className="text-yellow-500 hover:text-yellow-400">@Dikiy4747</a></li>
                 <li>Email: <a href="mailto:den67635430@gmail.com" className="text-yellow-500 hover:text-yellow-400">den67635430@gmail.com</a></li>
                 <li>Сайт: <a href="https://kodkontenta.ru" className="text-yellow-500 hover:text-yellow-400">kodkontenta.ru</a></li>
               </ul>
