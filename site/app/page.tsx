@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import DemoSection from "@/components/DemoSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import NewsSection from "@/components/NewsSection";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -59,6 +60,12 @@ export default function Home() {
 
         <div id="services">
           <ServicesSection preview />
+        </div>
+
+        <div className="divider mx-6 lg:mx-24" />
+
+        <div id="demo">
+          <DemoSection />
         </div>
 
         <div className="divider mx-6 lg:mx-24" />
@@ -126,7 +133,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-white font-semibold">Нужна помощь?</p>
-                <a href="https://t.me/denis_kodkontenta" target="_blank" rel="noopener noreferrer"
+                <a href="https://t.me/Dikiy4747" target="_blank" rel="noopener noreferrer"
                   className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
                   Напишите Денису →
                 </a>
@@ -156,12 +163,12 @@ export default function Home() {
                 </svg>
                 Канал @kontentcod
               </a>
-              <a href="https://t.me/denis_kodkontenta" target="_blank" rel="noopener noreferrer"
+              <a href="https://t.me/Dikiy4747" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-slate-500 hover:text-slate-300 transition-colors">
                 <svg className="w-4 h-4 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.27c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.998l-2.95-.924c-.643-.203-.657-.643.136-.953l11.527-4.444c.535-.194 1.002.131.37.571z"/>
                 </svg>
-                Личка @denis_kodkontenta
+                Личка @Dikiy4747
               </a>
               <a href="https://kodkontenta.ru" className="text-slate-500 hover:text-slate-300 transition-colors">
                 🌐 kodkontenta.ru
