@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AGENTS = [
@@ -94,33 +94,29 @@ interface Message {
   content: string;
 }
 
-function useIsAdmin() {
-  if (typeof window === "undefined") return false;
-  return new URLSearchParams(window.location.search).get("admin") === ADMIN_CODE;
-}
-
 export default function DemoSection() {
   const [activeAgent, setActiveAgent] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [initialized, setInitialized] = useState<Record<string, boolean>>({});
-  const [startTime] = useState<number>(() => Date.now());
   const [expired, setExpired] = useState(false);
-  const isAdmin = useIsAdmin();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const startTime = useRef(Date.now());
 
-  // Таймер истечения для обычных пользователей
-  useState(() => {
-    if (isAdmin) return;
+  useEffect(() => {
+    const admin = new URLSearchParams(window.location.search).get("admin") === ADMIN_CODE;
+    setIsAdmin(admin);
+    if (admin) return;
     const interval = setInterval(() => {
-      if (Date.now() - startTime > DEMO_MINUTES * 60 * 1000) {
+      if (Date.now() - startTime.current > DEMO_MINUTES * 60 * 1000) {
         setExpired(true);
         setActiveAgent(null);
         clearInterval(interval);
       }
     }, 10000);
     return () => clearInterval(interval);
-  });
+  }, []);
 
   const agent = AGENTS.find((a) => a.id === activeAgent);
 
