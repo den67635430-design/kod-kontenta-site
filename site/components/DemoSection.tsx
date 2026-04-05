@@ -88,10 +88,17 @@ const AGENTS = [
 
 const OPENROUTER_KEY = "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";
 const MODEL = "google/gemma-3-27b-it:free";
+const ADMIN_CODE = "Admin9791";
+const DEMO_MINUTES = 30;
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+}
+
+function useIsAdmin() {
+  if (typeof window === "undefined") return false;
+  return new URLSearchParams(window.location.search).get("admin") === ADMIN_CODE;
 }
 
 export default function DemoSection() {
@@ -100,6 +107,22 @@ export default function DemoSection() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [initialized, setInitialized] = useState<Record<string, boolean>>({});
+  const [startTime] = useState<number>(() => Date.now());
+  const [expired, setExpired] = useState(false);
+  const isAdmin = useIsAdmin();
+
+  // Таймер истечения для обычных пользователей
+  useState(() => {
+    if (isAdmin) return;
+    const interval = setInterval(() => {
+      if (Date.now() - startTime > DEMO_MINUTES * 60 * 1000) {
+        setExpired(true);
+        setActiveAgent(null);
+        clearInterval(interval);
+      }
+    }, 10000);
+    return () => clearInterval(interval);
+  });
 
   const agent = AGENTS.find((a) => a.id === activeAgent);
 
@@ -184,7 +207,18 @@ export default function DemoSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {expired && (
+          <div className="text-center mb-8 p-6 rounded-2xl" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <div className="text-2xl mb-2">⏰</div>
+            <div className="text-white font-semibold mb-1">Демо-время истекло</div>
+            <div className="text-slate-400 text-sm mb-4">Хотите получить полноценного AI-ассистента для вашего бизнеса?</div>
+            <a href="https://t.me/Dikiy4747" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-6 py-3">
+              Написать Денису →
+            </a>
+          </div>
+        )}
+
+        <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ${expired ? "opacity-40 pointer-events-none" : ""}`}>
           {AGENTS.map((ag, i) => (
             <motion.button
               key={ag.id}
