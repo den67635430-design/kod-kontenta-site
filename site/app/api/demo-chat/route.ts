@@ -1,34 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const OPENROUTER_KEY = "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";
-const MODELS = [
-  "meta-llama/llama-3.1-8b-instruct:free",
-  "google/gemma-3-27b-it:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
-];
-
 export async function POST(req: NextRequest) {
   const { messages } = await req.json();
+  const key = process.env.GROQ_API_KEY;
+  if (!key) return NextResponse.json({ reply: "API ключ не настроен." });
 
-  for (const model of MODELS) {
-    try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENROUTER_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://kodkontenta.ru",
-        },
-        body: JSON.stringify({ model, messages, max_tokens: 500 }),
-      });
-      const data = await res.json();
-      if (data.choices?.[0]?.message?.content) {
-        return NextResponse.json({ reply: data.choices[0].message.content });
-      }
-    } catch {
-      continue;
-    }
-  }
+  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "llama-3.1-8b-instant",
+      messages,
+      max_tokens: 500,
+      temperature: 0.7,
+    }),
+  });
 
-  return NextResponse.json({ reply: "Сервис временно недоступен. Попробуйте позже." });
+  const data = await res.json();
+  const reply = data.choices?.[0]?.message?.content;
+  if (reply) return NextResponse.json({ reply });
+
+  console.error("Groq error:", data);
+  return NextResponse.json({ reply: "Сервис временно недоступен." });
 }
