@@ -32,11 +32,13 @@ export async function POST(req: NextRequest) {
       .replace(/<reasoning>[\s\S]*?<\/reasoning>/gi, "")
       .trim();
 
-    // Если ответ содержит "пользователь спрашивает" / "нужно" в начале — это рассуждения
-    // Берём только часть после двойного переноса строки (финальный ответ)
+    // Убираем reasoning паттерны (модель думает на русском и английском)
+    const thinkingPatterns = /^(okay|ok,|let me|the user|alright|so,|i need|first,|let's|thinking|hmm|пользователь|нужно |давайте|итак,|таким образом|хорошо,|сначала)/i;
     const parts = reply.split(/\n\n+/);
-    if (parts.length > 1 && /пользователь|нужно кратко|нужно структур|давайте|итак|таким образом/i.test(parts[0])) {
-      reply = parts.slice(1).join("\n\n").trim();
+    // Находим первый абзац который НЕ является размышлением
+    const firstRealPart = parts.findIndex(p => !thinkingPatterns.test(p.trim()));
+    if (firstRealPart > 0) {
+      reply = parts.slice(firstRealPart).join("\n\n").trim();
     }
 
     return NextResponse.json({ reply });
