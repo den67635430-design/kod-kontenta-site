@@ -58,8 +58,8 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
       <button
         type="button"
         onClick={() => window.dispatchEvent(new CustomEvent('openLatiChat'))}
-        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center"
-        style={{ width: "190px", cursor: "pointer", background: "none", border: "none", padding: 0, zIndex: 9999 }}
+        className="fixed hidden md:flex flex-col items-center"
+        style={{ right: "24px", top: "80px", width: "190px", cursor: "pointer", background: "none", border: "none", padding: 0, zIndex: 9999 }}
       >
         <video
           ref={videoRef}
