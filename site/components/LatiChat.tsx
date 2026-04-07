@@ -21,11 +21,15 @@ interface LatiChatProps {
 }
 
 export default function LatiChat({ externalOpen, onExternalClose }: LatiChatProps = {}) {
-  const [internalOpen, setInternalOpen] = useState(false);
-  const open = externalOpen !== undefined ? externalOpen : internalOpen;
-  const setOpen = (val: boolean) => {
-    setInternalOpen(val);
-    if (!val && onExternalClose) onExternalClose();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (externalOpen) setOpen(true);
+  }, [externalOpen]);
+
+  const handleClose = () => {
+    setOpen(false);
+    onExternalClose?.();
   };
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "Привет! 👋 Я ЛАТИ — ваш AI-помощник. Расскажу о наших продуктах и услугах. Чем могу помочь?" },
@@ -104,7 +108,7 @@ export default function LatiChat({ externalOpen, onExternalClose }: LatiChatProp
                 <div className="text-white font-semibold text-sm">ЛАТИ</div>
                 <div className="text-xs text-slate-400">AI-ассистент · онлайн</div>
               </div>
-              <button onClick={() => setOpen(false)} className="text-slate-500 hover:text-white transition-colors">
+              <button onClick={handleClose} className="text-slate-500 hover:text-white transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>

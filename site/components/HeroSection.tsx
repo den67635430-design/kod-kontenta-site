@@ -63,7 +63,7 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
         style={{ width: "190px" }}
       >
         {/* Видео ЛАТИ — кликабельное */}
-        <div onClick={onOpenChat} style={{ cursor: "pointer" }}>
+        <div onClick={onOpenChat} style={{ cursor: "pointer", position: "relative" }}>
           <video
             ref={videoRef}
             src="/mascot/lati.mp4"
@@ -71,7 +71,7 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
             loop
             muted
             playsInline
-            style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))" }}
+            style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))", pointerEvents: "none" }}
           />
         </div>
         {/* Надпись под ЛАТИ */}
