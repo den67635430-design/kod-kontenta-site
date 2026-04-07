@@ -7,54 +7,14 @@ const WORDS = ["AI-агентов", "чат-ботов", "нейросотруд
 
 interface HeroSectionProps {
   onNavigate: (id: string) => void;
+  onOpenChat?: () => void;
 }
 
-interface ChatMessage {
-  role: "user" | "assistant";
-  text: string;
-}
-
-const SESSION_ID = Math.random().toString(36).slice(2);
-
-export default function HeroSection({ onNavigate }: HeroSectionProps) {
+export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps) {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [typing, setTyping] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // LATI chat state
-  const [chatOpen, setChatOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: "assistant", text: "Привет! 👋 Я помогаю автоматизировать бизнес с AI. Расскажите — чем занимаетесь?" }
-  ]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (chatOpen) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, chatOpen]);
-
-  const sendMessage = async () => {
-    const text = input.trim();
-    if (!text || loading) return;
-    setInput("");
-    setMessages(prev => [...prev, { role: "user", text }]);
-    setLoading(true);
-    try {
-      const res = await fetch("/api/prodavec/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, session_id: SESSION_ID }),
-      });
-      const data = await res.json();
-      setMessages(prev => [...prev, { role: "assistant", text: data.reply || "Минуту..." }]);
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant", text: "Соединение прервалось, попробуйте ещё раз." }]);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     const word = WORDS[wordIndex];
@@ -103,7 +63,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         style={{ width: "190px" }}
       >
         {/* Видео ЛАТИ — кликабельное */}
-        <div onClick={() => setChatOpen(o => !o)} style={{ cursor: "pointer" }}>
+        <div onClick={onOpenChat} style={{ cursor: "pointer" }}>
           <video
             ref={videoRef}
             src="/mascot/lati.mp4"
@@ -119,7 +79,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
-          onClick={() => setChatOpen(o => !o)}
+          onClick={onOpenChat}
           style={{
             width: "190px",
             background: "linear-gradient(135deg, #9A7A2E 0%, #C9A84C 100%)",
@@ -134,105 +94,13 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
         >
           <p className="text-sm font-bold text-white">Привет! 👋</p>
           <p className="text-xs font-medium text-white mt-1 leading-snug" style={{ opacity: 0.9 }}>
-            {chatOpen ? "Закрыть чат" : "Нажмите — задайте вопрос!"}
+            Нажмите — задайте вопрос!
           </p>
           <div className="flex items-center justify-center gap-1.5 mt-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>Онлайн · готов к работе</span>
           </div>
         </motion.div>
-
-        {/* Чат-окно */}
-        {chatOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            style={{
-              position: "absolute",
-              top: "100%",
-              right: 0,
-              marginTop: "12px",
-              width: "320px",
-              background: "rgba(15,15,25,0.97)",
-              border: "1px solid rgba(201,168,76,0.3)",
-              borderRadius: "16px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden",
-              zIndex: 50,
-            }}
-          >
-            {/* Header */}
-            <div style={{ padding: "12px 16px", background: "linear-gradient(135deg, #9A7A2E 0%, #C9A84C 100%)", display: "flex", alignItems: "center", gap: "8px" }}>
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-sm font-bold text-white">ЛАТИ · AI-консультант</span>
-              <button onClick={() => setChatOpen(false)} style={{ marginLeft: "auto", color: "rgba(255,255,255,0.7)", fontSize: "18px", lineHeight: 1 }}>×</button>
-            </div>
-            {/* Messages */}
-            <div style={{ height: "280px", overflowY: "auto", padding: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {messages.map((m, i) => (
-                <div key={i} style={{ display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
-                  <div style={{
-                    maxWidth: "85%",
-                    padding: "8px 12px",
-                    borderRadius: m.role === "user" ? "12px 12px 2px 12px" : "12px 12px 12px 2px",
-                    background: m.role === "user" ? "linear-gradient(135deg, #9A7A2E, #C9A84C)" : "rgba(255,255,255,0.08)",
-                    color: "white",
-                    fontSize: "13px",
-                    lineHeight: "1.4",
-                  }}>
-                    {m.text}
-                  </div>
-                </div>
-              ))}
-              {loading && (
-                <div style={{ display: "flex" }}>
-                  <div style={{ padding: "8px 12px", borderRadius: "12px 12px 12px 2px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)", fontSize: "13px" }}>
-                    Печатает...
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-            {/* Input */}
-            <div style={{ padding: "10px 12px", borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: "8px" }}>
-              <input
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                onKeyDown={e => e.key === "Enter" && sendMessage()}
-                placeholder="Напишите вопрос..."
-                style={{
-                  flex: 1,
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: "8px",
-                  padding: "8px 12px",
-                  color: "white",
-                  fontSize: "13px",
-                  outline: "none",
-                }}
-              />
-              <button
-                onClick={sendMessage}
-                disabled={loading}
-                style={{
-                  background: "linear-gradient(135deg, #9A7A2E, #C9A84C)",
-                  border: "none",
-                  borderRadius: "8px",
-                  padding: "8px 12px",
-                  color: "white",
-                  fontSize: "13px",
-                  cursor: loading ? "not-allowed" : "pointer",
-                  opacity: loading ? 0.6 : 1,
-                }}
-              >
-                →
-              </button>
-            </div>
-          </motion.div>
-        )}
       </motion.div>
 
       <div className="container-wide relative z-10 pt-28 pb-16 w-full">

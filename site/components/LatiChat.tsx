@@ -15,8 +15,18 @@ const QUICK_QUESTIONS = [
   "Как связаться с Денисом?",
 ];
 
-export default function LatiChat() {
-  const [open, setOpen] = useState(false);
+interface LatiChatProps {
+  externalOpen?: boolean;
+  onExternalClose?: () => void;
+}
+
+export default function LatiChat({ externalOpen, onExternalClose }: LatiChatProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = externalOpen !== undefined ? externalOpen : internalOpen;
+  const setOpen = (val: boolean) => {
+    setInternalOpen(val);
+    if (!val && onExternalClose) onExternalClose();
+  };
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "Привет! 👋 Я ЛАТИ — ваш AI-помощник. Расскажу о наших продуктах и услугах. Чем могу помочь?" },
   ]);
@@ -50,7 +60,7 @@ export default function LatiChat() {
       const data = await res.json();
       setMessages((prev) => [...prev, { role: "assistant", content: data.text }]);
     } catch {
-      setMessages((prev) => [...prev, { role: "assistant", content: "Что-то пошло не так. Напишите в Telegram: @denis_kodkontenta" }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: "Что-то пошло не так. Напишите в Telegram: @Dikiy4747" }]);
     } finally {
       setLoading(false);
     }

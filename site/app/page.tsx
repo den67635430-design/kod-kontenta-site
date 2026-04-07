@@ -17,6 +17,7 @@ const SECTIONS = ["hero", "services", "portfolio", "news", "reviews", "contact"]
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [latiChatOpen, setLatiChatOpen] = useState(false);
   // Следим за активной секцией при скролле
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,7 +53,7 @@ export default function Home() {
 
       <main>
         <div id="hero">
-          <HeroSection onNavigate={navigateTo} />
+          <HeroSection onNavigate={navigateTo} onOpenChat={() => setLatiChatOpen(true)} />
         </div>
 
         {/* Разделитель */}
@@ -179,7 +180,7 @@ export default function Home() {
       </footer>
 
       {/* AI-ассистент ЛАТИ */}
-      <LatiChat />
+      <LatiChat externalOpen={latiChatOpen} onExternalClose={() => setLatiChatOpen(false)} />
       <CookieBanner />
     </div>
   );
