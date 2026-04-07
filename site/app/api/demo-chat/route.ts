@@ -22,8 +22,25 @@ export async function POST(req: NextRequest) {
   });
 
   const data = await res.json();
-  const reply = data.choices?.[0]?.message?.content;
-  if (reply) return NextResponse.json({ reply });
+  let reply = data.choices?.[0]?.message?.content as string | undefined;
+
+  // Убираем reasoning/thinking блоки которые модель выводит в ответ
+  if (reply) {
+    // Удаляем паттерны "думающих" моделей
+    reply = reply
+      .replace(/<think>[\s\S]*?<\/think>/gi, "")
+      .replace(/<reasoning>[\s\S]*?<\/reasoning>/gi, "")
+      .trim();
+
+    // Если ответ содержит "пользователь спрашивает" / "нужно" в начале — это рассуждения
+    // Берём только часть после двойного переноса строки (финальный ответ)
+    const parts = reply.split(/\n\n+/);
+    if (parts.length > 1 && /пользователь|нужно кратко|нужно структур|давайте|итак|таким образом/i.test(parts[0])) {
+      reply = parts.slice(1).join("\n\n").trim();
+    }
+
+    return NextResponse.json({ reply });
+  }
 
   console.error("LiteLLM error:", JSON.stringify(data));
   return NextResponse.json({ reply: "Сервис временно недоступен." });
