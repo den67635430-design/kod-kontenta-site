@@ -55,31 +55,22 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
       </div>
 
       {/* ЛАТИ — правый угол, кликабельный чат */}
-      <motion.div
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center z-30 float-animation"
-        style={{ width: "190px", cursor: "pointer" }}
+      <button
+        type="button"
         onClick={onOpenChat}
+        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center float-animation"
+        style={{ width: "190px", cursor: "pointer", background: "none", border: "none", padding: 0, zIndex: 9999 }}
       >
-        {/* Видео ЛАТИ */}
-        <div style={{ position: "relative" }}>
-          <video
-            ref={videoRef}
-            src="/mascot/lati.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))", pointerEvents: "none", display: "block" }}
-          />
-        </div>
-        {/* Надпись под ЛАТИ */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
+        <video
+          ref={videoRef}
+          src="/mascot/lati.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))", pointerEvents: "none", display: "block" }}
+        />
+        <div
           style={{
             width: "190px",
             background: "linear-gradient(135deg, #9A7A2E 0%, #C9A84C 100%)",
@@ -89,7 +80,6 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
             marginTop: "8px",
             padding: "10px 14px",
             textAlign: "center",
-            cursor: "pointer",
           }}
         >
           <p className="text-sm font-bold text-white">Привет! 👋</p>
@@ -100,8 +90,8 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             <span className="text-xs font-medium text-white" style={{ opacity: 0.8 }}>Онлайн · готов к работе</span>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </button>
 
       <div className="container-wide relative z-10 pt-28 pb-16 w-full">
         <div className="max-w-2xl flex flex-col justify-center" style={{ minHeight: "80vh" }}>
