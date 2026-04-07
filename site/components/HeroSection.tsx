@@ -59,11 +59,12 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
         initial={{ opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center z-20 float-animation"
-        style={{ width: "190px" }}
+        className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center z-30 float-animation"
+        style={{ width: "190px", cursor: "pointer" }}
+        onClick={onOpenChat}
       >
-        {/* Видео ЛАТИ — кликабельное */}
-        <div onClick={onOpenChat} style={{ cursor: "pointer", position: "relative" }}>
+        {/* Видео ЛАТИ */}
+        <div style={{ position: "relative" }}>
           <video
             ref={videoRef}
             src="/mascot/lati.mp4"
@@ -71,7 +72,7 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
             loop
             muted
             playsInline
-            style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))", pointerEvents: "none" }}
+            style={{ width: "190px", height: "190px", objectFit: "contain", filter: "drop-shadow(0 0 30px rgba(201,168,76,0.5))", pointerEvents: "none", display: "block" }}
           />
         </div>
         {/* Надпись под ЛАТИ */}
@@ -79,7 +80,6 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
-          onClick={onOpenChat}
           style={{
             width: "190px",
             background: "linear-gradient(135deg, #9A7A2E 0%, #C9A84C 100%)",
