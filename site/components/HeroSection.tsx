@@ -57,7 +57,7 @@ export default function HeroSection({ onNavigate, onOpenChat }: HeroSectionProps
       {/* ЛАТИ — правый угол, кликабельный чат */}
       <button
         type="button"
-        onClick={onOpenChat}
+        onClick={() => window.dispatchEvent(new CustomEvent('openLatiChat'))}
         className="absolute right-4 xl:right-6 top-16 hidden md:flex flex-col items-center"
         style={{ width: "190px", cursor: "pointer", background: "none", border: "none", padding: 0, zIndex: 9999 }}
       >

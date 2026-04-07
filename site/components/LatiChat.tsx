@@ -27,6 +27,12 @@ export default function LatiChat({ externalOpen, onExternalClose }: LatiChatProp
     if (externalOpen) setOpen(true);
   }, [externalOpen]);
 
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener('openLatiChat', handler);
+    return () => window.removeEventListener('openLatiChat', handler);
+  }, []);
+
   const handleClose = () => {
     setOpen(false);
     onExternalClose?.();
