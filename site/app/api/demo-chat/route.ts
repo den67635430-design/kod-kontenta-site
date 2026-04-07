@@ -32,13 +32,14 @@ export async function POST(req: NextRequest) {
       .replace(/<reasoning>[\s\S]*?<\/reasoning>/gi, "")
       .trim();
 
-    // Убираем reasoning паттерны (модель думает на русском и английском)
-    const thinkingPatterns = /^(okay|ok,|let me|the user|alright|so,|i need|first,|let's|thinking|hmm|пользователь|нужно |давайте|итак,|таким образом|хорошо,|сначала)/i;
+    // Убираем reasoning только если ПЕРВЫЙ абзац — размышление
+    const thinkingPatterns = /^(okay[,!]?|ok,|let me|the user|alright|so,|i need|first,|let's|thinking:|hmm|пользователь|нужно |давайте,|итак,|таким образом|хорошо,|сначала)/i;
     const parts = reply.split(/\n\n+/);
-    // Находим первый абзац который НЕ является размышлением
-    const firstRealPart = parts.findIndex(p => !thinkingPatterns.test(p.trim()));
-    if (firstRealPart > 0) {
-      reply = parts.slice(firstRealPart).join("\n\n").trim();
+    if (parts.length > 1 && thinkingPatterns.test(parts[0].trim())) {
+      const firstRealPart = parts.findIndex(p => !thinkingPatterns.test(p.trim()));
+      if (firstRealPart > 0) {
+        reply = parts.slice(firstRealPart).join("\n\n").trim();
+      }
     }
 
     return NextResponse.json({ reply });
