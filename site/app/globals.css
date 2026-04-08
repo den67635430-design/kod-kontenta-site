@@ -227,9 +227,6 @@ button {
   font-size: 16px;
 }
 
-/* WebKit скролл оптимизация для iOS */
--webkit-overflow-scrolling: touch;
-
 /* macOS: Скролл-бар стиль (только видна при скролле) */
 ::-webkit-scrollbar {
   width: 8px;
@@ -293,9 +290,3 @@ select {
   }
 }
 
-/* iOS: Поддержка notch/Dynamic Island */
-@supports (viewport-fit: cover) {
-  html {
-    viewport-fit: cover;
-  }
-}
