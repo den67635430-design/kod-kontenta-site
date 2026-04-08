@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CodeRain from "@/components/CodeRain";
@@ -139,6 +139,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kodkontenta.ru",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
 };
 
 const jsonLd = {
