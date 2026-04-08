@@ -139,6 +139,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kodkontenta.ru",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Код контента",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 const jsonLd = {

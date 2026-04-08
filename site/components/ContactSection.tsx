@@ -74,7 +74,7 @@ export default function ContactSection() {
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Давайте <span className="gradient-text">поговорим</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-slate-400 text-lg text-center">
             Есть идея для проекта? Нужна автоматизация? Просто напишите — разберёмся вместе
           </p>
         </motion.div>
@@ -127,7 +127,7 @@ export default function ContactSection() {
               Готовы автоматизировать<br />
               <span className="gradient-text">свой бизнес?</span>
             </h3>
-            <p className="text-slate-400 text-lg mb-8 max-w-xl mx-auto">
+            <p className="text-slate-400 text-lg mb-8 text-center">
               Напишите в Telegram — обсудим задачу и найдём лучшее решение
             </p>
             <a

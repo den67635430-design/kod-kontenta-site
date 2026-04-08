@@ -205,3 +205,97 @@ body {
     padding: 0 20px;
   }
 }
+
+
+/* === iOS & macOS Optimization === */
+
+/* iOS Safe Area поддержка */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* iOS: Отключаем автоматическое увеличение шрифта при клике */
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+}
+
+/* WebKit скролл оптимизация для iOS */
+-webkit-overflow-scrolling: touch;
+
+/* macOS: Скролл-бар стиль (только видна при скролле) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
+
+/* iOS: Оптимизация тач элементов */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: max(8px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right));
+  }
+}
+
+/* macOS: Системный шрифт для лучшей интеграции */
+@supports (font-family: -apple-system) {
+  /* Используем Inter как основной, но с системными fallback'ами для macOS */
+  body {
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+/* iOS: Отключаем highlight при клике */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS: Улучшенный инпут стиль */
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+}
+
+/* macOS: Улучшенный фокус для клавиатуры */
+@media (prefers-reduced-motion: no-preference) {
+  a:focus,
+  button:focus,
+  input:focus {
+    outline: 2px solid rgba(201, 168, 76, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+/* iOS: Поддержка notch/Dynamic Island */
+@supports (viewport-fit: cover) {
+  html {
+    viewport-fit: cover;
+  }
+}

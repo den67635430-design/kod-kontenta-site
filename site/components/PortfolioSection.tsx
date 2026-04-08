@@ -68,7 +68,7 @@ export default function PortfolioSection({ preview = false }: { preview?: boolea
               Наши <span className="gradient-text">продукты</span>
             </h2>
           )}
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-slate-400 text-lg text-center">
             Собственные AI-продукты, которые уже работают и помогают людям
           </p>
         </motion.div>

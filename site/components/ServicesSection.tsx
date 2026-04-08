@@ -80,7 +80,7 @@ export default function ServicesSection({ preview = false }: { preview?: boolean
               Что мы <span className="gradient-text">создаём</span>
             </h2>
           )}
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-slate-400 text-lg text-center">
             Весь спектр AI-разработки: от простых ботов до сложных интеллектуальных систем
           </p>
         </motion.div>
