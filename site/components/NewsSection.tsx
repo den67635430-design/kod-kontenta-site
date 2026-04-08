@@ -74,7 +74,7 @@ export default function NewsSection({ preview = false }: { preview?: boolean }) 
               Из <span className="gradient-text">Telegram-канала</span>
             </h2>
           )}
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-slate-400 text-lg text-center">
             Актуальные посты из канала{" "}
             <a href="https://t.me/kontentcod" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
               @kontentcod

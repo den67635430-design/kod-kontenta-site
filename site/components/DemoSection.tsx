@@ -188,9 +188,13 @@ export default function DemoSection() {
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Попробуйте <span className="gradient-text">AI-ассистентов</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg text-center">
             Выберите ассистента и задайте вопрос — прямо сейчас, бесплатно
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm" style={{ background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.25)" }}>
+            <span>⚠️</span>
+            <span className="text-yellow-300/80"><strong className="text-yellow-300">Демо-версия</strong> — ассистенты работают в ограниченном режиме, чтобы показать возможности. Полноценные боты создаются индивидуально под ваш бизнес.</span>
+          </div>
         </motion.div>
 
         {expired && (

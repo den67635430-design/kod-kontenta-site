@@ -75,7 +75,7 @@ export default function ReviewsSection({ preview = false }: { preview?: boolean 
               Говорят <span className="gradient-text">клиенты</span>
             </h2>
           )}
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-slate-400 text-lg text-center">
             Реальные отзывы от людей, с которыми работали
           </p>
         </motion.div>
